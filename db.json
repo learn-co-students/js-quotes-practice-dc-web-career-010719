@@ -37,10 +37,16 @@
       "author": "Newt Gingrich"
     },
     {
-      "quote": "Hai is not a boss.",
-      "author": "Hai Nguyen",
+      "quote": "Hai is a boss.",
+      "author": "Ross Jones",
       "likes": 14,
       "id": 7
+    },
+    {
+      "quote": "Life is like a box of chocolate. You never know what you will get.",
+      "author": "Anthony Gregg",
+      "likes": 34,
+      "id": 8
     }
   ]
 }

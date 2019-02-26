@@ -3,10 +3,7 @@
 let quoteList
 let form
 let div
-let form1
-let input
-let label
-let toggle
+let sortButton
 
 document.addEventListener("DOMContentLoaded", init)
 
@@ -19,22 +16,13 @@ function init() {
 
   div = document.createElement('div')
   document.querySelector('.container').appendChild(div)
-  form1 = document.createElement('form')
-  div.appendChild(form1)
-  input = document.createElement('input')
-  input.id = 'sort'
-  input.placeholder = 'Enter Author name...'
-  label = document.createElement('label')
-  label.for = 'sort'
-  label.innerText = 'Sort Quotes By Author Name: '
-  form1.appendChild(label)
-  form1.appendChild(input)
-  toggle = document.createElement('input')
-  form1.appendChild(toggle)
-  toggle.id = 'toggle'
-  toggle.type = 'submit'
-  toggle.value = 'Sort!'
-  form1.addEventListener('submit', handleClickOfSort)
+  sortButton = document.createElement('button')
+  sortButton.innerText = "Sort Quotes By Author Name"
+  sortButton.classList.add('btn')
+  sortButton.classList.add('btn-primary')
+  sortButton.id = 'sort'
+  div.appendChild(sortButton)
+  sortButton.addEventListener('click', handleClickOfSortButton)
 }
 
 function getAllCodes() {
@@ -239,31 +227,18 @@ function patchQuote(id) {
     })
 }
 
-function handleClickOfSort(event) {
-  event.preventDefault()
-  if (document.querySelector("#toggle").value === 'Sort!') {
-    let parameter = document.querySelector('#sort').value
-      if (parameter) {
-        fetch('http://localhost:3000/quotes/')
-        .then(res => res.json())
-        .then(allQuotesData => {
-          document.querySelector("#quote-list").innerHTML = ''
-          document.querySelector("#toggle").value = 'Unsort!'
-          // document.querySelector('#sort').value = ''
-          if (allQuotesData.filter(quote => quote.author === parameter).length === 0) {
-            document.querySelector("#toggle").value = 'Sort!'
-            getAllCodes()
-            alert('There is no author with this name!')
-          } else {
-            allQuotesData.filter(quote => quote.author === parameter).forEach(renderQuote)
-          }
-        })
-      } else {
-        alert('Author name must be entered!')
-      }
+function handleClickOfSortButton() {
+  if (document.querySelector('#sort').innerText === 'Sort Quotes By Author Name') {
+    fetch('http://localhost:3000/quotes')
+    .then(res => res.json())
+    .then(allQuotesData => {
+      document.querySelector("#quote-list").innerHTML = ''
+      document.querySelector('#sort').innerText = 'Unsort'
+      allQuotesData.sort(function(a, b) {return a.author.localeCompare(b.author)}).forEach(renderQuote)
+    })
   } else {
-    document.querySelector("#toggle").value = 'Sort!'
     document.querySelector("#quote-list").innerHTML = ''
+    document.querySelector('#sort').innerText = 'Sort Quotes By Author Name'
     getAllCodes()
   }
 }
