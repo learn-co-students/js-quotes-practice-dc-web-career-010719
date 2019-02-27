@@ -1,3 +1,16 @@
 #quote-list {
   padding: 20px;
 }
+
+.btn-edit {
+  color: white;
+  background-color: blue;
+}
+
+#edit-quote {
+  width: 800px;
+}
+
+#edit-author {
+  width: 300px;
+}
