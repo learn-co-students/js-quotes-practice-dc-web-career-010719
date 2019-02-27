@@ -1,12 +1,16 @@
 // It might be a good idea to add event listener to make sure this file
 // only runs after the DOM has finshed loading.
+sorted = false
 
 document.addEventListener('DOMContentLoaded', init)
 
 function init() {
   renderQuotes()
   document.getElementById('new-quote-form').addEventListener('submit', addQuote)
-  document.getElementById('sort-button').addEventListener('click', ()=>{renderQuotes(true)})
+  document.getElementById('sort-button').addEventListener('click', ()=>{
+    sorted = !sorted
+    renderQuotes(sorted)
+  })
 }
 
 function renderQuotes(sorted=false) {
