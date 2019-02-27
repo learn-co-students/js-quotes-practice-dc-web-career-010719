@@ -19,7 +19,6 @@ function renderQuotes(sorted=false) {
     fetch('http://localhost:3000/quotes')
     .then(resp => resp.json())
     .then(json => {
-      // debugger
       json.sort((a, b) => a.author.localeCompare(b.author)).forEach(renderQuote)
     })
   } else {
@@ -28,10 +27,6 @@ function renderQuotes(sorted=false) {
     .then(resp => resp.json())
     .then(json => json.forEach(renderQuote))
   }
-}
-
-function sortAuthors(json) {
-  return json.sort((a, b) => a.author.localeCompare(b.author))
 }
 
 function renderQuote(quote) {
