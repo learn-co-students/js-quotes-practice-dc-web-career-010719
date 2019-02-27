@@ -14,19 +14,12 @@ function init() {
 }
 
 function renderQuotes(sorted=false) {
-  if (sorted) {
-    document.getElementById('quote-list').innerHTML = ''
-    fetch('http://localhost:3000/quotes')
-    .then(resp => resp.json())
-    .then(json => {
-      json.sort((a, b) => a.author.localeCompare(b.author)).forEach(renderQuote)
-    })
-  } else {
-    document.getElementById('quote-list').innerHTML = ''
-    fetch('http://localhost:3000/quotes')
-    .then(resp => resp.json())
-    .then(json => json.forEach(renderQuote))
-  }
+  document.getElementById('quote-list').innerHTML = ''
+  fetch('http://localhost:3000/quotes')
+  .then(resp => resp.json())
+  .then(json => {
+    sorted ? json.sort((a, b) => a.author.localeCompare(b.author)).forEach(renderQuote) : json.forEach(renderQuote)
+  })
 }
 
 function renderQuote(quote) {
