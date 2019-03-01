@@ -25,17 +25,16 @@
       "author": "Confucius"
     },
     {
-      "id": 5 ,
+      "id": 5,
       "quote": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
       "likes": 1,
       "author": "Winston Churchhill"
     },
     {
-      "id": 6,
-      "quote": "Perseverance is the hard work you do after you get tired of doing the hard work you already did.",
-      "likes": 1,
-      "author": "Newt Gingrich"
+      "quote": "When I fight someone, I want to break his will. I want to take his manhood. I want to rip out his heart and show it to him.",
+      "likes": 9,
+      "author": "Mike Tyson",
+      "id": 7
     }
-
   ]
 }
